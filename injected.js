@@ -28,11 +28,13 @@ document.body.appendChild(d);
 try {
   chrome.storage.sync.get(["LR-speed", "LR-upthresh", "LR-downthresh"], function(v){
     speed = v["LR-speed"];
-    upthresh = v["LR-upthresh"];
-    downthresh = v["LR-downthresh"];
-    u.innerHTML = upthresh;
-    d.innerHTML = downthresh;
-    s.innerHTML = speed;
+    if(speed){
+      upthresh = v["LR-upthresh"];
+      downthresh = v["LR-downthresh"];
+      u.innerHTML = upthresh;
+      d.innerHTML = downthresh;
+      s.innerHTML = speed;
+    }
     var sc2  = document.createElement('script');
     sc2.src  = chrome.extension.getURL('webcam_injector.js');
     document.head.appendChild(sc2);
