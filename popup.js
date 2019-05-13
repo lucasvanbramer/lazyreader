@@ -16,11 +16,13 @@ activate.onclick = function(e) {
   if(!currently_on){
   chrome.tabs.executeScript(null, { file: "injected.js" });
   currently_on = true;
+  activate.innerHTML = "stop being lazy";
   }
   else{
   chrome.tabs.executeScript(null, {file: "uninject.js" });
   console.log("trying to uninject");
   currently_on = false;
+  activate.innerHTML = "get lazy";
   }
 };
 
